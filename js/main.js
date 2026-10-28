@@ -56,6 +56,55 @@
   // Shapes — armed on load, dropped (and re-dropped) whenever the section scrolls into view
   const shapes = document.querySelector('.shapes');
   if (shapes) shapes.classList.add('is-armed');
+  // physics — the cursor shoves a shape aside, a damped spring brings it back (a little overshoot included)
+  if (shapes && window.matchMedia('(hover:hover)').matches) {
+    const radius = { circle: 312, triangle: 250, square: 270 }; // Figma px, rough body size
+    const bodies = Array.from(shapes.querySelectorAll('.shape')).map((el) => ({
+      el, r: radius[['circle', 'triangle', 'square'].find((n) => el.classList.contains('shape--' + n))], x: 0, y: 0, vx: 0, vy: 0,
+    }));
+    let mouse = null;
+    let raf = 0;
+    let last = 0;
+    const SPRING = 70, DAMP = 8, PUSH = 14000;
+    function step(now) {
+      const dt = Math.min(0.032, (now - last) / 1000 || 0.016);
+      last = now;
+      const k = window.innerWidth / 1920;
+      let moving = false;
+      bodies.forEach((b) => {
+        const cx = b.el.offsetLeft + b.el.offsetWidth / 2 + b.x;
+        const cy = b.el.offsetTop + b.el.offsetHeight / 2 + b.y;
+        let ax = -SPRING * b.x - DAMP * b.vx;
+        let ay = -SPRING * b.y - DAMP * b.vy;
+        if (mouse) {
+          const dx = cx - mouse.x, dy = cy - mouse.y;
+          const dist = Math.hypot(dx, dy) || 1;
+          const reach = (b.r + 200) * k;
+          if (dist < reach) {
+            const f = Math.pow(1 - dist / reach, 1.5) * PUSH * k;
+            ax += (dx / dist) * f;
+            ay += (dy / dist) * f;
+          }
+        }
+        b.vx += ax * dt; b.vy += ay * dt;
+        b.x += b.vx * dt; b.y += b.vy * dt;
+        const cap = 170 * k, len = Math.hypot(b.x, b.y);
+        if (len > cap) { b.x *= cap / len; b.y *= cap / len; }
+        b.el.style.setProperty('--px', b.x.toFixed(2) + 'px');
+        b.el.style.setProperty('--py', b.y.toFixed(2) + 'px');
+        if (Math.abs(b.x) > 0.05 || Math.abs(b.y) > 0.05 || Math.abs(b.vx) > 0.5 || Math.abs(b.vy) > 0.5) moving = true;
+      });
+      raf = moving || mouse ? requestAnimationFrame(step) : 0;
+    }
+    const wake = () => { if (!raf) { last = performance.now(); raf = requestAnimationFrame(step); } };
+    shapes.addEventListener('pointermove', (e) => {
+      if (stacked.matches || reduceMotion.matches) return;
+      const r = shapes.getBoundingClientRect();
+      mouse = { x: e.clientX - r.left, y: e.clientY - r.top };
+      wake();
+    });
+    shapes.addEventListener('pointerleave', () => { mouse = null; wake(); });
+  }
   function updateShapes() {
     if (!shapes) return;
     const r = shapes.getBoundingClientRect();
