@@ -51,16 +51,11 @@
 .shape__text{margin-top:calc(32 * var(--k));font-size:calc(22 * var(--k));line-height:calc(36 * var(--k));font-weight:500;letter-spacing:calc(-.22 * var(--k));}
 .shape--circle{--drop:calc(-1060 * var(--k));left:calc(37 * var(--k));top:calc(411 * var(--k));width:calc(625 * var(--k));height:calc(625 * var(--k));border-radius:50%;padding-top:calc(220 * var(--k));}
 .shape--triangle{--drop:calc(-880 * var(--k));left:calc(612 * var(--k));top:calc(292 * var(--k));width:calc(728 * var(--k));height:calc(558 * var(--k));-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 728 558'%3E%3Cpolygon points='364,198.3 528,449.6 200,449.6' fill='%23000' stroke='%23000' stroke-width='216.72' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 728 558'%3E%3Cpolygon points='364,198.3 528,449.6 200,449.6' fill='%23000' stroke='%23000' stroke-width='216.72' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;padding-top:calc(292 * var(--k));}
-.shape--square{--drop:calc(-1100 * var(--k));left:calc(1347 * var(--k));top:calc(543.5 * var(--k));width:calc(520 * var(--k));height:calc(520 * var(--k));border-radius:calc(108.36 * var(--k));transform:rotate(7.85deg);padding-top:calc(168 * var(--k));}
+.shape--square{--drop:calc(-1100 * var(--k));left:calc(1347 * var(--k));top:calc(543.5 * var(--k));width:calc(520 * var(--k));height:calc(520 * var(--k));border-radius:calc(108.36 * var(--k));transform:translate(var(--mx),var(--my)) rotate(7.85deg);padding-top:calc(168 * var(--k));}
 
-/* hover: shapes tilt and swell with a springy settle */
-.shape{transition:scale .6s cubic-bezier(.34,1.56,.64,1),rotate .6s cubic-bezier(.34,1.56,.64,1);}
-@media (hover:hover) and (min-width:1025px){
-  .shape:hover{scale:1.07;}
-  .shape--circle:hover{rotate:-8deg;}
-  .shape--triangle:hover{rotate:6deg;}
-  .shape--square:hover{rotate:9deg;}
-}
+/* hover: shapes drift after the cursor at different depths (position only, no scaling) */
+.shape{--mx:0px;--my:0px;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+.shape--circle,.shape--triangle{transform:translate(var(--mx),var(--my));}
 
 /* shapes fall from the top and bounce when the section scrolls in */
 @keyframes shape-drop{

@@ -56,6 +56,26 @@
   // Shapes — armed on load, dropped (and re-dropped) whenever the section scrolls into view
   const shapes = document.querySelector('.shapes');
   if (shapes) shapes.classList.add('is-armed');
+  // hover — each shape follows the cursor a little, at its own depth
+  if (shapes && window.matchMedia('(hover:hover)').matches) {
+    const depth = { circle: 48, triangle: 80, square: 62 }; // Figma px of travel
+    const items = Array.from(shapes.querySelectorAll('.shape')).map((el) => ({
+      el, d: depth[Object.keys(depth).find((n) => el.classList.contains('shape--' + n))],
+    }));
+    const drift = (nx, ny) => {
+      const k = window.innerWidth / 1920;
+      items.forEach(({ el, d }) => {
+        el.style.setProperty('--mx', (nx * d * k).toFixed(1) + 'px');
+        el.style.setProperty('--my', (ny * d * k).toFixed(1) + 'px');
+      });
+    };
+    shapes.addEventListener('mousemove', (e) => {
+      if (stacked.matches || reduceMotion.matches) return;
+      const r = shapes.getBoundingClientRect();
+      drift(((e.clientX - r.left) / r.width - 0.5) * 2, ((e.clientY - r.top) / r.height - 0.5) * 2);
+    });
+    shapes.addEventListener('mouseleave', () => drift(0, 0));
+  }
   function updateShapes() {
     if (!shapes) return;
     const r = shapes.getBoundingClientRect();
