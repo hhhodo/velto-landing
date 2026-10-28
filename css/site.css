@@ -51,11 +51,7 @@
 .shape__text{margin-top:calc(32 * var(--k));font-size:calc(22 * var(--k));line-height:calc(36 * var(--k));font-weight:500;letter-spacing:calc(-.22 * var(--k));}
 .shape--circle{--drop:calc(-1060 * var(--k));left:calc(37 * var(--k));top:calc(411 * var(--k));width:calc(625 * var(--k));height:calc(625 * var(--k));border-radius:50%;padding-top:calc(220 * var(--k));}
 .shape--triangle{--drop:calc(-880 * var(--k));left:calc(612 * var(--k));top:calc(292 * var(--k));width:calc(728 * var(--k));height:calc(558 * var(--k));-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 728 558'%3E%3Cpolygon points='364,198.3 528,449.6 200,449.6' fill='%23000' stroke='%23000' stroke-width='216.72' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 728 558'%3E%3Cpolygon points='364,198.3 528,449.6 200,449.6' fill='%23000' stroke='%23000' stroke-width='216.72' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;padding-top:calc(292 * var(--k));}
-.shape--square{--drop:calc(-1100 * var(--k));left:calc(1347 * var(--k));top:calc(543.5 * var(--k));width:calc(520 * var(--k));height:calc(520 * var(--k));border-radius:calc(108.36 * var(--k));transform:translate(var(--mx),var(--my)) rotate(7.85deg);padding-top:calc(168 * var(--k));}
-
-/* hover: shapes drift after the cursor at different depths (position only, no scaling) */
-.shape{--mx:0px;--my:0px;transition:transform .7s cubic-bezier(.22,1,.36,1);}
-.shape--circle,.shape--triangle{transform:translate(var(--mx),var(--my));}
+.shape--square{--drop:calc(-1100 * var(--k));left:calc(1347 * var(--k));top:calc(543.5 * var(--k));width:calc(520 * var(--k));height:calc(520 * var(--k));border-radius:calc(108.36 * var(--k));transform:rotate(7.85deg);padding-top:calc(168 * var(--k));}
 
 /* shapes fall from the top and bounce when the section scrolls in */
 @keyframes shape-drop{
@@ -73,6 +69,36 @@
   .shapes.is-armed.is-in .shape{animation:shape-drop 1.5s both;}
   .shapes.is-armed.is-in .shape--triangle{animation-delay:.2s;}
   .shapes.is-armed.is-in .shape--square{animation-delay:.4s;}
+}
+
+/* hover: each shape plays its own motion (no scaling) */
+@keyframes hop{
+  0%,100%{transform:translateY(0);}
+  25%{transform:translateY(calc(-70 * var(--k)));}
+  50%{transform:translateY(0);}
+  70%{transform:translateY(calc(-26 * var(--k)));}
+  85%{transform:translateY(0);}
+}
+@keyframes swing{
+  0%,100%{transform:rotate(0);}
+  22%{transform:rotate(-9deg);}
+  50%{transform:rotate(7deg);}
+  74%{transform:rotate(-4deg);}
+}
+@keyframes wobble{
+  0%,100%{transform:translateX(0) rotate(7.85deg);}
+  20%{transform:translateX(calc(-34 * var(--k))) rotate(-2deg);}
+  45%{transform:translateX(calc(28 * var(--k))) rotate(15deg);}
+  70%{transform:translateX(calc(-12 * var(--k))) rotate(4deg);}
+}
+@media (hover:hover) and (min-width:1025px) and (prefers-reduced-motion:no-preference){
+  .shape--circle:hover{animation:hop 1s cubic-bezier(.3,.7,.4,1);}
+  .shape--triangle:hover{transform-origin:50% 100%;animation:swing 1.1s ease-in-out;}
+  .shape--square:hover{animation:wobble 1s ease-in-out;}
+  /* after the drop: keep its (finished) animation in the list so it does not restart, and add the hover motion beside it */
+  .shapes.is-armed.is-in .shape--circle:hover{animation:shape-drop 1.5s both,hop 1s cubic-bezier(.3,.7,.4,1);animation-delay:0s,0s;}
+  .shapes.is-armed.is-in .shape--triangle:hover{animation:shape-drop 1.5s both,swing 1.1s ease-in-out;animation-delay:.2s,0s;}
+  .shapes.is-armed.is-in .shape--square:hover{animation:shape-drop 1.5s both,wobble 1s ease-in-out;animation-delay:.4s,0s;}
 }
 
 /* ---------- products stage (pinned scroll animation) ---------- */
