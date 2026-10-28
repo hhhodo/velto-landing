@@ -15,7 +15,7 @@
   const sections = links.map((a) => document.querySelector(a.getAttribute('href')));
   function updateCurrent() {
     const probe = window.innerHeight * 0.4;
-    let cur = 0;
+    let cur = -1; // nothing highlighted while the hero is on screen
     sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= probe) cur = i; });
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) cur = sections.length - 1;
     links.forEach((a, i) => a.classList.toggle('is-current', i === cur));

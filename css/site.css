@@ -185,7 +185,8 @@
 .footer__top{display:flex;align-items:center;height:calc(88 * var(--k));border-bottom:1px solid rgba(255,255,255,.15);}
 .footer__links{display:flex;gap:calc(60 * var(--k));}
 .footer__links a{position:relative;display:block;font-size:calc(18 * var(--k));line-height:calc(22.5 * var(--k));letter-spacing:calc(-.36 * var(--k));color:#aaa;}
-.footer__links a.is-strong{color:#fff;font-weight:500;}
+.footer__links a{transition:color .2s;}
+.footer__links a:hover{color:#fff;}
 .footer__bottom{display:flex;align-items:center;gap:calc(128 * var(--k));padding-block:calc(52 * var(--k)) calc(60 * var(--k));}
 .footer__logo{display:flex;align-items:center;gap:calc(12 * var(--k));width:calc(260 * var(--k));height:calc(53 * var(--k));flex:none;font-size:calc(32 * var(--k));font-weight:700;letter-spacing:calc(-.64 * var(--k));}
 .footer__logo svg{width:calc(44 * var(--k));height:calc(44 * var(--k));}
