@@ -15,7 +15,7 @@ full rounded diamond, and the copy, spec card and thumbnail dock fade in.
 
 ## Notes
 - Figma MCP was not available; values were measured from the reference screenshot.
-- The product illustration is an inline SVG symbol (`vt-charger`) in `index.html`; swap for a real image later.
+- Product image and dock thumbnails are image placeholders (`.img`).
 - Feature images are `.img` placeholders.
 - `js/main.js` maps scroll progress to `--w` / `--d` / `--u` on `.stage__pin`. Layout stacks statically at 1024px and below, and with reduced motion.
 - `css/styles.css` is the shared token file (do not edit); brand styles live in `css/site.css`.
