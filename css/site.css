@@ -45,13 +45,13 @@
 .hero__thumb.is-active{opacity:1;outline-color:#fff;}
 
 /* ---------- shapes ---------- */
-.shapes{position:relative;height:calc(1273 * var(--k));overflow:hidden;border-radius:calc(108.36 * var(--k));background:#f3f4f5;color:var(--ink);text-align:center;}
+.shapes{position:relative;height:calc(1273 * var(--k));overflow:hidden;background:#fff;color:var(--ink);text-align:center;}
 .shape{position:absolute;background:var(--brand);}
 .shape__title{font-size:calc(40 * var(--k));line-height:calc(48 * var(--k));font-weight:700;letter-spacing:calc(-.4 * var(--k));}
 .shape__text{margin-top:calc(32 * var(--k));font-size:calc(22 * var(--k));line-height:calc(36 * var(--k));font-weight:500;letter-spacing:calc(-.22 * var(--k));}
 .shape--circle{--drop:calc(-1060 * var(--k));left:calc(37 * var(--k));top:calc(411 * var(--k));width:calc(625 * var(--k));height:calc(625 * var(--k));border-radius:50%;padding-top:calc(220 * var(--k));}
-.shape--triangle{--drop:calc(-880 * var(--k));left:calc(612 * var(--k));top:calc(292 * var(--k));width:calc(728 * var(--k));height:calc(558 * var(--k));clip-path:polygon(50% 0,100% 100%,0 100%);padding-top:calc(292 * var(--k));}
-.shape--square{--drop:calc(-1100 * var(--k));left:calc(1347 * var(--k));top:calc(543.5 * var(--k));width:calc(520 * var(--k));height:calc(520 * var(--k));transform:rotate(7.85deg);padding-top:calc(168 * var(--k));}
+.shape--triangle{--drop:calc(-880 * var(--k));left:calc(612 * var(--k));top:calc(292 * var(--k));width:calc(728 * var(--k));height:calc(558 * var(--k));-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 728 558'%3E%3Cpolygon points='364,198.3 528,449.6 200,449.6' fill='%23000' stroke='%23000' stroke-width='216.72' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 728 558'%3E%3Cpolygon points='364,198.3 528,449.6 200,449.6' fill='%23000' stroke='%23000' stroke-width='216.72' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;padding-top:calc(292 * var(--k));}
+.shape--square{--drop:calc(-1100 * var(--k));left:calc(1347 * var(--k));top:calc(543.5 * var(--k));width:calc(520 * var(--k));height:calc(520 * var(--k));border-radius:calc(108.36 * var(--k));transform:rotate(7.85deg);padding-top:calc(168 * var(--k));}
 
 /* shapes fall from the top and bounce when the section scrolls in */
 @keyframes shape-drop{
