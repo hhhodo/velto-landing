@@ -1,4 +1,4 @@
-// VELTO landing — nav, hero image switcher, pinned Mobility scroll stage, Line Up card highlight
+// VELTO landing — nav, hero image switcher, pinned Mobility scroll stage with product switcher, Line Up card highlight
 (function () {
   const nav = document.getElementById('nav');
   const stage = document.querySelector('[data-stage]');
@@ -42,6 +42,34 @@
       });
     });
   });
+
+  // Products — the dock switches the scooter and the diamond color (same section, one product at a time)
+  const products = [
+    { color: '#93dc73', img: 'assets/products/scooter-green.png' },
+    { color: '#dc7d60', img: 'assets/products/scooter-red.png' },
+    { color: '#81898e', img: 'assets/products/scooter-black.png' },
+    { color: '#e4c05b', img: 'assets/products/scooter-yellow.png' },
+  ];
+  const productImgs = Array.from(document.querySelectorAll('.stage__product img'));
+  const dockBtns = Array.from(document.querySelectorAll('.dock__btn'));
+  const colorNames = ['그린', '레드', '블랙', '옐로'];
+  function showProduct(i) {
+    productImgs.forEach((im, k) => im.classList.toggle('is-active', k === i));
+    if (pin) pin.style.setProperty('--diamond', products[i].color);
+    // current product first, the other three follow in order
+    const order = [i, ...products.map((_, k) => k).filter((k) => k !== i)];
+    dockBtns.forEach((b, n) => {
+      const k = order[n];
+      b.dataset.i = k;
+      b.setAttribute('aria-label', 'VELTO B ' + colorNames[k]);
+      b.querySelector('img').src = products[k].img;
+    });
+  }
+  dockBtns.forEach((b) => {
+    if (b.classList.contains('is-current')) return;
+    b.addEventListener('click', () => showProduct(Number(b.dataset.i)));
+  });
+  showProduct(0);
 
   let ticking = false;
   function update() {
