@@ -102,6 +102,11 @@
 .stage__dot i{position:absolute;inset:0;background:var(--blue);border-radius:calc(4 * var(--k));transform:rotate(45deg);}
 .stage__title{width:calc(480 * var(--k));margin-top:calc(28.858 * var(--k));font-size:max(calc(54.086 * .75px),calc(54.086 * var(--k)));line-height:max(calc(70.312 * .75px),calc(70.312 * var(--k)));font-weight:500;
   letter-spacing:calc(-.48 * var(--k));color:var(--ink);}
+.stage__desc{width:calc(440 * var(--k));margin-top:calc(24 * var(--k));word-break:keep-all;font-size:max(calc(20 * .75px),calc(20 * var(--k)));line-height:1.5;letter-spacing:calc(-.4 * var(--k));color:#444;}
+.stage__stats{width:calc(440 * var(--k));margin-top:calc(48 * var(--k));border-top:1px solid var(--line);}
+.stage__stats div{display:flex;align-items:baseline;justify-content:space-between;padding-block:calc(20 * var(--k));border-bottom:1px solid var(--line);}
+.stage__stats dt{font-size:max(calc(16 * .75px),calc(16 * var(--k)));line-height:1.4;letter-spacing:calc(-.32 * var(--k));color:#666;}
+.stage__stats dd{font-size:max(calc(28 * .75px),calc(28 * var(--k)));line-height:1.4;font-weight:600;letter-spacing:calc(-.48 * var(--k));color:var(--ink);}
 
 .spec{position:absolute;right:calc(57.542 * var(--k));top:50%;width:calc(500 * var(--k));background:#fff;
   border:1px solid var(--line);border-radius:calc(20 * var(--k));translate:0 calc(-50% + (1 - var(--u)) * 30 * var(--k));}
@@ -229,6 +234,12 @@
   .stage__dot{width:var(--space-3);height:var(--space-3);}
   .stage__dot i{border-radius:3px;}
   .stage__title{width:auto;margin-top:var(--space-4);font-size:var(--fs-h2);line-height:var(--lh-h2);}
+  .stage__desc,.stage__stats{width:auto;}
+  .stage__desc{margin-top:var(--space-3);font-size:var(--fs-body-1);}
+  .stage__stats{margin-top:var(--space-5);}
+  .stage__stats div{padding-block:var(--space-3);}
+  .stage__stats dt{font-size:var(--fs-badge);}
+  .stage__stats dd{font-size:var(--fs-h3);}
   .spec{padding:var(--space-5);border-radius:var(--radius-md);}
   .spec__title{font-size:var(--fs-h3);}
   .spec__text{margin-top:var(--space-3);font-size:var(--fs-body-1);}

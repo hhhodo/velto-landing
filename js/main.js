@@ -116,16 +116,18 @@
 
   // Products — scrolling past the intro swaps the scooter one by one; the dock circles slide left and the name changes
   const products = [
-    { name: 'VELTO Mint', title: '도심을 가볍게, 라스트마일의 기준', text: '가벼운 차체와 안정적인 주행감으로 출퇴근길과 골목 구석구석까지 부담 없이 이어줍니다.', color: '#93dc73', img: 'assets/products/scooter-green.png', alt: '그린' },
-    { name: 'VELTO Coral', title: '눈에 띄는 존재감, 공유에 최적', text: '선명한 코랄 컬러와 튼튼한 프레임으로 거점 기반 공유 서비스에서도 한눈에 찾기 쉽습니다.', color: '#dc7d60', img: 'assets/products/scooter-red.png', alt: '레드' },
-    { name: 'VELTO Slate', title: '힘이 필요한 길을 위한 고성능', text: '대용량 배터리와 강력한 모터로 언덕과 장거리까지 여유 있게 달려갑니다.', color: '#81898e', img: 'assets/products/scooter-black.png', alt: '블랙' },
-    { name: 'VELTO Sun', title: '어디서든 밝게, 데일리 모델', text: '시인성 높은 옐로 컬러와 넉넉한 발판으로 매일 타도 편안한 주행을 만듭니다.', color: '#e4c05b', img: 'assets/products/scooter-yellow.png', alt: '옐로' },
+    { name: 'VELTO Mint', desc: '출퇴근과 라스트마일에 맞춘 기본형 모델. 접어서 보관하기 쉽고 누구나 편하게 탈 수 있습니다.', stats: ['45 km', '360 Wh', '25 km/h'], title: '도심을 가볍게, 라스트마일의 기준', text: '가벼운 차체와 안정적인 주행감으로 출퇴근길과 골목 구석구석까지 부담 없이 이어줍니다.', color: '#93dc73', img: 'assets/products/scooter-green.png', alt: '그린' },
+    { name: 'VELTO Coral', desc: '거점 기반 공유 서비스에 맞춘 운영형 모델. 한눈에 눈에 띄고 정비도 간편합니다.', stats: ['60 km', '480 Wh', '25 km/h'], title: '눈에 띄는 존재감, 공유에 최적', text: '선명한 코랄 컬러와 튼튼한 프레임으로 거점 기반 공유 서비스에서도 한눈에 찾기 쉽습니다.', color: '#dc7d60', img: 'assets/products/scooter-red.png', alt: '레드' },
+    { name: 'VELTO Slate', desc: '긴 주행거리와 강한 출력을 갖춘 플래그십 모델. 오르막과 장거리에도 안정적으로 달립니다.', stats: ['150 km', '1,200 Wh', '45 km/h'], title: '힘이 필요한 길을 위한 고성능', text: '대용량 배터리와 강력한 모터로 언덕과 장거리까지 여유 있게 달려갑니다.', color: '#81898e', img: 'assets/products/scooter-black.png', alt: '블랙' },
+    { name: 'VELTO Sun', desc: '시인성과 승차감을 높인 데일리 모델. 매일 타도 지치지 않는 편안한 주행을 만듭니다.', stats: ['80 km', '640 Wh', '35 km/h'], title: '어디서든 밝게, 데일리 모델', text: '시인성 높은 옐로 컬러와 넉넉한 발판으로 매일 타도 편안한 주행을 만듭니다.', color: '#e4c05b', img: 'assets/products/scooter-yellow.png', alt: '옐로' },
   ];
   const productImgs = Array.from(document.querySelectorAll('.stage__product img'));
   const dockBtns = Array.from(document.querySelectorAll('.dock__btn'));
   const specTitle = document.querySelector('.spec__title');
   const specText = document.querySelector('.spec__text');
   const stageTitle = document.querySelector('.stage__title');
+  const stageDesc = document.querySelector('.stage__desc');
+  const stageStats = Array.from(document.querySelectorAll('.stage__stats dd'));
   // dock is a nav bar: fixed order, the current item expands to show its name
   dockBtns.forEach((b, k) => {
     b.querySelector('img').src = products[k].img;
@@ -141,6 +143,8 @@
     if (specTitle) specTitle.textContent = products[i].title;
     if (specText) specText.textContent = products[i].text;
     if (stageTitle) stageTitle.textContent = products[i].name;
+    if (stageDesc) stageDesc.textContent = products[i].desc;
+    stageStats.forEach((dd, k) => { dd.textContent = products[i].stats[k]; });
     dockBtns.forEach((b, k) => {
       b.classList.toggle('is-current', k === i);
       if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
