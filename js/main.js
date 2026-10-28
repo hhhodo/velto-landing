@@ -125,6 +125,7 @@
   const dockBtns = Array.from(document.querySelectorAll('.dock__btn'));
   const specTitle = document.querySelector('.spec__title');
   const specText = document.querySelector('.spec__text');
+  const stageTitle = document.querySelector('.stage__title');
   // dock is a nav bar: fixed order, the current item expands to show its name
   dockBtns.forEach((b, k) => {
     b.querySelector('img').src = products[k].img;
@@ -139,6 +140,7 @@
     if (pin) pin.style.setProperty('--diamond', products[i].color);
     if (specTitle) specTitle.textContent = products[i].title;
     if (specText) specText.textContent = products[i].text;
+    if (stageTitle) stageTitle.textContent = products[i].name;
     dockBtns.forEach((b, k) => {
       b.classList.toggle('is-current', k === i);
       if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
