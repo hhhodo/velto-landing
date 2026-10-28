@@ -40,7 +40,7 @@ Footer   — full-bleed
 
 <header class="nav" id="nav">
   <div class="nav__row">
-    <a href="#top" class="nav__mark" aria-label="VELTO home">
+    <a href="#company" class="nav__mark" aria-label="VELTO home">
       <svg class="nav__logo" viewBox="0 0 32 32" aria-hidden="true">
         <rect x="7" y="7" width="18" height="18" rx="5" transform="rotate(45 16 16)" fill="#93dc73"/>
         <path d="M11 11.5 16 21l5-9.5h-3L16 15.6l-2-4.1z" fill="#111"/>
@@ -48,10 +48,10 @@ Footer   — full-bleed
       <span>VELTO</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="#top">Company</a>
-      <a href="#products">Products</a>
+      <a href="#company">Company</a>
       <a href="#solutions">Solutions</a>
-      <a href="#lineup">Support</a>
+      <a href="#products">Products</a>
+      <a href="#lineup">Line Up</a>
       <a href="#news">News</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -61,16 +61,22 @@ Footer   — full-bleed
 <main id="top" class="page">
 
   <!-- Hero — 1080 -->
-  <section class="hero">
-    <div class="hero__bg img" role="img" aria-label="Hero image placeholder"></div>
+  <section class="hero" id="company">
+    <!-- Swap each placeholder for <img src="..." alt=""> (slide and its thumbnail) -->
+    <div class="hero__slides">
+      <div class="hero__slide img is-active" role="img" aria-label="Hero image 1 placeholder"></div>
+      <div class="hero__slide img" style="--ph:#c9c9c9" role="img" aria-label="Hero image 2 placeholder"></div>
+      <div class="hero__slide img" style="--ph:#b9b9b9" role="img" aria-label="Hero image 3 placeholder"></div>
+    </div>
     <div class="hero__fade"></div>
     <div class="hero__copy">
       <h1 class="hero__title">Every Route Moving</h1>
       <p class="hero__desc">도시의 모든 이동을 잇는 벨토와 함께, 믿고 맡길 수 있는 앞으로의 모빌리티</p>
     </div>
-    <div class="hero__thumbs" aria-hidden="true">
-      <div class="img hero__thumb"></div>
-      <div class="img hero__thumb"></div>
+    <div class="hero__thumbs" role="group" aria-label="Hero image selector">
+      <button type="button" class="hero__thumb img is-active" aria-label="Image 1" aria-pressed="true"></button>
+      <button type="button" class="hero__thumb img" style="--ph:#c9c9c9" aria-label="Image 2" aria-pressed="false"></button>
+      <button type="button" class="hero__thumb img" style="--ph:#b9b9b9" aria-label="Image 3" aria-pressed="false"></button>
     </div>
   </section>
 
@@ -97,7 +103,7 @@ Footer   — full-bleed
     <div class="stage__pin">
       <div class="stage__frame">
 
-        <p class="stage__word" aria-hidden="true">Products</p>
+        <p class="stage__word" aria-hidden="true">Mobility</p>
 
         <div class="stage__art">
           <div class="stage__diamond"></div>
@@ -212,7 +218,7 @@ Footer   — full-bleed
     </ul>
   </div>
   <div class="footer__bottom">
-    <a href="#top" class="footer__logo" aria-label="VELTO home">
+    <a href="#company" class="footer__logo" aria-label="VELTO home">
       <svg viewBox="0 0 32 32" aria-hidden="true">
         <rect x="7" y="7" width="18" height="18" rx="5" transform="rotate(45 16 16)" fill="#93dc73"/>
         <path d="M11 11.5 16 21l5-9.5h-3L16 15.6l-2-4.1z" fill="#111"/>

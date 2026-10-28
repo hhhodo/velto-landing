@@ -1,4 +1,4 @@
-// VELTO landing — nav state, pinned "Products" scroll stage, Line Up card highlight
+// VELTO landing — nav, hero image switcher, pinned Mobility scroll stage, Line Up card highlight
 (function () {
   const nav = document.getElementById('nav');
   const stage = document.querySelector('[data-stage]');
@@ -10,10 +10,44 @@
   const range = (p, a, b) => clamp((p - a) / (b - a));
   const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
+  // GNB — one link per section, in page order; highlight the section in view
+  const links = Array.from(document.querySelectorAll('.nav__links a'));
+  const sections = links.map((a) => document.querySelector(a.getAttribute('href')));
+  function updateCurrent() {
+    const probe = window.innerHeight * 0.4;
+    let cur = 0;
+    sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= probe) cur = i; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) cur = sections.length - 1;
+    links.forEach((a, i) => a.classList.toggle('is-current', i === cur));
+  }
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY);
+      window.scrollTo({ top, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    });
+  });
+
+  // Hero — click a thumbnail to show that image
+  const slides = Array.from(document.querySelectorAll('.hero__slide'));
+  const thumbs = Array.from(document.querySelectorAll('.hero__thumb'));
+  thumbs.forEach((t, i) => {
+    t.addEventListener('click', () => {
+      slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+      thumbs.forEach((b, k) => {
+        b.classList.toggle('is-active', k === i);
+        b.setAttribute('aria-pressed', String(k === i));
+      });
+    });
+  });
+
   let ticking = false;
   function update() {
     ticking = false;
     nav.classList.toggle('is-solid', window.scrollY > 8);
+    updateCurrent();
     if (!pin) return;
 
     let p = 1;
