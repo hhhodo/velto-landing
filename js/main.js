@@ -1,4 +1,4 @@
-// VELTO landing — nav, hero image switcher, pinned Mobility scroll stage with product switcher, Line Up hover, Q&A accordion
+// VELTO landing — nav, hero image switcher, pinned Mobility scroll stage with product switcher, Q&A accordion
 (function () {
   const nav = document.getElementById('nav');
   const stage = document.querySelector('[data-stage]');
@@ -160,14 +160,6 @@
   window.addEventListener('resize', requestUpdate);
   stacked.addEventListener('change', requestUpdate);
   update();
-
-  // Line Up — the hovered / focused card turns white
-  const cards = Array.from(document.querySelectorAll('.lcard'));
-  cards.forEach((c) => {
-    const on = () => cards.forEach((o) => o.classList.toggle('is-active', o === c));
-    c.addEventListener('mouseenter', on);
-    c.addEventListener('focusin', on);
-  });
 
   // Q&A — plus button opens / closes an answer
   document.querySelectorAll('.qna__q').forEach((q) => {
