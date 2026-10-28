@@ -52,7 +52,7 @@ Footer   — full-bleed
       <a href="#solutions">Solutions</a>
       <a href="#products">Products</a>
       <a href="#lineup">Line Up</a>
-      <a href="#news">News</a>
+      <a href="#qna">Q&amp;A</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -144,20 +144,16 @@ Footer   — full-bleed
               <tr><td>V1540B</td><td>150 km</td><td>1,200 Wh</td><td>45 km/h</td></tr>
             </tbody>
           </table>
-          <a href="#contact" class="spec__cta">Find Recommended Products</a>
         </div>
 
-        <div class="dock" role="group" aria-label="Product color">
+        <nav class="dock" aria-label="Products">
           <div class="dock__pill">
-            <span class="dock__btn is-current"><img alt=""></span>
-            <span class="dock__label">VELTO Mint</span>
-            <span class="dock__group">
-              <button type="button" class="dock__btn"><img alt=""></button>
-              <button type="button" class="dock__btn"><img alt=""></button>
-              <button type="button" class="dock__btn"><img alt=""></button>
-            </span>
+            <button type="button" class="dock__btn"><img alt=""><span class="dock__name"></span></button>
+            <button type="button" class="dock__btn"><img alt=""><span class="dock__name"></span></button>
+            <button type="button" class="dock__btn"><img alt=""><span class="dock__name"></span></button>
+            <button type="button" class="dock__btn"><img alt=""><span class="dock__name"></span></button>
           </div>
-        </div>
+        </nav>
 
       </div>
     </div>
@@ -169,10 +165,6 @@ Footer   — full-bleed
     <div class="lineup__copy">
       <h2 class="lineup__title">Line Up</h2>
       <p class="lineup__desc">벨토의 모빌리티는 업계 최고 수준의 배터리와<br>모터 사양을 적용하여 완벽한 주행을 만들어 냅니다.<br>제품의 개발과 개선 단계에서 경쟁 제품과 비교·연구를 거치고,<br>고객에게 무조건 비교우위에 있는 모델을 제공합니다.</p>
-      <div class="lineup__nav">
-        <button type="button" class="lineup__arrow" data-dir="-1" aria-label="이전">←</button>
-        <button type="button" class="lineup__arrow lineup__arrow--next" data-dir="1" aria-label="다음">→</button>
-      </div>
     </div>
     <div class="lineup__cards">
       <article class="lcard is-active">
@@ -196,21 +188,35 @@ Footer   — full-bleed
     </div>
   </section>
 
-  <!-- News -->
-  <section class="news" id="news">
-    <div class="news__inner">
-      <div class="news__head">
-        <h2 class="news__title">Latest News Release</h2>
-        <a href="#news" class="news__more" aria-label="더보기"><img src="assets/icons/arrow-news-head.png" alt=""></a>
+  <!-- Q&A -->
+  <section class="qna" id="qna">
+    <div class="qna__inner">
+      <div class="qna__head">
+        <h2 class="qna__title">Frequently Asked Questions</h2>
       </div>
-      <div class="news__body">
-        <p class="news__label"><i></i>NEWS</p>
-        <ul class="news__list">
-          <li><a href="#news"><span class="news__t">벨토, 서울 전역 공유 킥보드 5천 대 확대 … 라스트마일 강화</span><span class="news__d">2026.10.16</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
-          <li><a href="#news"><span class="news__t">벨토모빌리티, 유럽에 차세대 배터리 교환 스테이션 공개</span><span class="news__d">2026.10.12</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
-          <li><a href="#news"><span class="news__t">벨토, 국내 최초 급속충전 연동 스마트 거점 구축</span><span class="news__d">2026.10.08</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
-          <li><a href="#news"><span class="news__t">벨토 배터리, 국제 안전 인증 획득 … 글로벌 공급망 확대</span><span class="news__d">2026.09.17</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
-          <li><a href="#news"><span class="news__t">벨토, 9월에만 3,865대 수주 ‘쾌거’</span><span class="news__d">2026.09.15</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
+      <div class="qna__body">
+        <p class="qna__label"><i></i>Q&amp;A</p>
+        <ul class="qna__list">
+          <li class="qna__item is-open">
+            <button type="button" class="qna__q" aria-expanded="true" aria-controls="qna-a0"><span>벨토 킥보드는 어떻게 이용하나요?</span><i class="qna__plus" aria-hidden="true"></i></button>
+            <div class="qna__a" id="qna-a0" role="region"><div><p>앱에서 가까운 거점을 찾아 QR 코드를 스캔하면 바로 잠금이 해제됩니다. 이용을 마친 뒤 지정 거점에 반납하면 자동으로 결제가 완료됩니다.</p></div></div>
+          </li>
+          <li class="qna__item">
+            <button type="button" class="qna__q" aria-expanded="false" aria-controls="qna-a1"><span>한 번 충전으로 얼마나 달릴 수 있나요?</span><i class="qna__plus" aria-hidden="true"></i></button>
+            <div class="qna__a" id="qna-a1" role="region"><div><p>모델에 따라 45km부터 최대 150km까지 주행할 수 있습니다. 모델별 주행거리와 배터리 용량은 Products 섹션의 스펙 표에서 확인하실 수 있습니다.</p></div></div>
+          </li>
+          <li class="qna__item">
+            <button type="button" class="qna__q" aria-expanded="false" aria-controls="qna-a2"><span>이용에 필요한 면허나 연령 기준이 있나요?</span><i class="qna__plus" aria-hidden="true"></i></button>
+            <div class="qna__a" id="qna-a2" role="region"><div><p>관련 법규에 따라 일정 연령 이상이며 운전면허를 소지한 분만 이용할 수 있습니다. 자세한 기준은 앱의 이용 안내를 확인해 주세요.</p></div></div>
+          </li>
+          <li class="qna__item">
+            <button type="button" class="qna__q" aria-expanded="false" aria-controls="qna-a3"><span>기업·지자체 도입은 어떻게 문의하나요?</span><i class="qna__plus" aria-hidden="true"></i></button>
+            <div class="qna__a" id="qna-a3" role="region"><div><p>하단 문의하기로 접수해 주시면 담당자가 영업일 기준 2일 이내에 연락드립니다. 거점 배치부터 정비, 운영까지 함께 설계해 드립니다.</p></div></div>
+          </li>
+          <li class="qna__item">
+            <button type="button" class="qna__q" aria-expanded="false" aria-controls="qna-a4"><span>주행 중 고장이나 사고가 나면 어떻게 하나요?</span><i class="qna__plus" aria-hidden="true"></i></button>
+            <div class="qna__a" id="qna-a4" role="region"><div><p>앱의 고객센터 또는 대표전화 1588-0000으로 연락해 주세요. 24시간 접수되며, 필요한 경우 현장으로 정비 인력이 출동합니다.</p></div></div>
+          </li>
         </ul>
       </div>
     </div>
@@ -226,7 +232,7 @@ Footer   — full-bleed
       <li><a href="mailto:hello@velto.example">문의하기</a></li>
       <li><a href="#contact">찾아오시는 길</a></li>
       <li><a href="#contact">CI 소개</a></li>
-      <li><a href="#contact" class="has-ext">채용공고<img src="assets/icons/external.png" alt=""></a></li>
+      <li><a href="#contact">채용공고</a></li>
     </ul>
   </div>
   <div class="footer__bottom">

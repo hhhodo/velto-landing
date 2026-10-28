@@ -1,4 +1,4 @@
-// VELTO landing — nav, hero image switcher, pinned Mobility scroll stage with product switcher, Line Up card highlight
+// VELTO landing — nav, hero image switcher, pinned Mobility scroll stage with product switcher, Line Up hover, Q&A accordion
 (function () {
   const nav = document.getElementById('nav');
   const stage = document.querySelector('[data-stage]');
@@ -74,44 +74,24 @@
   ];
   const productImgs = Array.from(document.querySelectorAll('.stage__product img'));
   const dockBtns = Array.from(document.querySelectorAll('.dock__btn'));
-  const dockLabel = document.querySelector('.dock__label');
   const specTitle = document.querySelector('.spec__title');
+  // dock is a nav bar: fixed order, the current item expands to show its name
+  dockBtns.forEach((b, k) => {
+    b.querySelector('img').src = products[k].img;
+    b.querySelector('.dock__name').textContent = products[k].name;
+    b.setAttribute('aria-label', products[k].name + ' ' + products[k].alt);
+  });
   let curProduct = -1;
   function showProduct(i) {
     if (i === curProduct) return;
-    const first = curProduct === -1;
-    const before = dockBtns.map((b) => b.getBoundingClientRect().left);
     curProduct = i;
     productImgs.forEach((im, k) => im.classList.toggle('is-active', k === i));
     if (pin) pin.style.setProperty('--diamond', products[i].color);
-    dockLabel.textContent = products[i].name;
     if (specTitle) specTitle.textContent = products[i].name;
-    // current product first, the other three follow in order
-    const order = [i, ...products.map((_, k) => k).filter((k) => k !== i)];
-    const prev = new Map(dockBtns.map((b, n) => [b.dataset.i, before[n]]));
-    dockBtns.forEach((b, n) => {
-      const k = order[n];
-      b.dataset.i = String(k);
-      b.classList.toggle('is-current', n === 0);
-      b.setAttribute('aria-label', products[k].name + ' ' + products[k].alt);
-      b.querySelector('img').src = products[k].img;
+    dockBtns.forEach((b, k) => {
+      b.classList.toggle('is-current', k === i);
+      if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
     });
-    if (first || reduceMotion.matches || stacked.matches) return;
-    // FLIP: every circle glides from where its product used to sit
-    const after = dockBtns.map((b) => b.getBoundingClientRect().left);
-    dockBtns.forEach((b, n) => {
-      const from = prev.get(b.dataset.i);
-      const dx = from === undefined ? 0 : from - after[n];
-      if (Math.abs(dx) < 1) return;
-      const wrap = Math.abs(dx) > 150 * (window.innerWidth / 1920); // jumped to the far end: fade in instead
-      b.animate(wrap
-        ? [{ opacity: 0, transform: 'translateX(' + 40 * (window.innerWidth / 1920) + 'px)' }, { opacity: 1, transform: 'none' }]
-        : [{ transform: 'translateX(' + dx + 'px)' }, { transform: 'none' }],
-      { duration: 500, easing: 'cubic-bezier(.3,.7,.2,1)' });
-    });
-    dockLabel.classList.remove('is-swap');
-    void dockLabel.offsetWidth;
-    dockLabel.classList.add('is-swap');
   }
   // scroll offset (px below the stage top) at which product i takes over
   const STEP = 0.5; // viewport heights per product
@@ -120,9 +100,8 @@
     const intro = stage.offsetHeight - pin.offsetHeight - window.innerHeight * EXTRA;
     return intro + i * STEP * window.innerHeight;
   }
-  dockBtns.forEach((b) => {
+  dockBtns.forEach((b, i) => {
     b.addEventListener('click', () => {
-      const i = Number(b.dataset.i);
       if (i === curProduct) return;
       if (reduceMotion.matches || stacked.matches) { showProduct(i); return; }
       const top = stage.getBoundingClientRect().top + window.scrollY + productStart(i) + window.innerHeight * STEP * 0.5;
@@ -162,13 +141,20 @@
   stacked.addEventListener('change', requestUpdate);
   update();
 
-  // Line Up — arrows move the highlighted (white) card
+  // Line Up — the hovered / focused card turns white
   const cards = Array.from(document.querySelectorAll('.lcard'));
-  document.querySelectorAll('.lineup__arrow').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const cur = Math.max(0, cards.findIndex((c) => c.classList.contains('is-active')));
-      const next = (cur + Number(btn.dataset.dir) + cards.length) % cards.length;
-      cards.forEach((c, i) => c.classList.toggle('is-active', i === next));
+  cards.forEach((c) => {
+    const on = () => cards.forEach((o) => o.classList.toggle('is-active', o === c));
+    c.addEventListener('mouseenter', on);
+    c.addEventListener('focusin', on);
+  });
+
+  // Q&A — plus button opens / closes an answer
+  document.querySelectorAll('.qna__q').forEach((q) => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.qna__item');
+      const open = item.classList.toggle('is-open');
+      q.setAttribute('aria-expanded', String(open));
     });
   });
 })();
