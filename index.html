@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELTO — Smart EV Charging for Every Route</title>
+<meta name="description" content="VELTO builds EV charging hardware and networks for streets, fleets and homes.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<!--
+variant:
+typo=quiet
+image=medium
+color=accent
+
+image-radius=soft
+card-radius=round
+button-radius=soft
+
+border=hairline
+button-style=solid+outline
+fw=700/400
+spacing=space-11
+-->
+
+<!--
+Layout Declaration
+Nav      — full-bleed
+Products — full-bleed — pinned scroll stage — 3-6-3 (ref-measured)
+Features — 4-4-4
+Contact  — full-bleed — 6-6
+Footer   — 4-4-4
+-->
+
+<!-- Drawn product art, reused by the stage and the dock thumbnails -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="vt-body" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#0b0b0c"/><stop offset=".1" stop-color="#2e2e33"/>
+      <stop offset=".24" stop-color="#0d0d0f"/><stop offset=".7" stop-color="#050506"/>
+      <stop offset=".9" stop-color="#1f1f23"/><stop offset="1" stop-color="#09090a"/>
+    </linearGradient>
+    <linearGradient id="vt-metal" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#7d8188"/><stop offset=".35" stop-color="#f4f6f8"/>
+      <stop offset=".65" stop-color="#9aa0a6"/><stop offset="1" stop-color="#4f5359"/>
+    </linearGradient>
+    <linearGradient id="vt-gloss" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <symbol id="vt-charger" viewBox="0 0 120 224">
+      <rect x="4" y="34" width="13" height="160" rx="3" fill="#1b1b1e"/>
+      <rect x="103" y="34" width="13" height="160" rx="3" fill="#1b1b1e"/>
+      <rect x="7" y="38" width="3" height="152" rx="1.5" fill="#fff" fill-opacity=".14"/>
+      <rect x="106" y="38" width="3" height="152" rx="1.5" fill="#fff" fill-opacity=".1"/>
+      <path d="M22 16Q22 3 38 3H82Q98 3 98 16V198H22Z" fill="url(#vt-body)"/>
+      <rect x="29" y="9" width="9" height="182" rx="4.5" fill="url(#vt-gloss)" opacity=".6"/>
+      <rect x="90" y="14" width="2" height="176" rx="1" fill="#fff" fill-opacity=".12"/>
+      <circle cx="86" cy="36" r="1.8" fill="#4d9bf5"/>
+      <circle cx="86" cy="44" r="1.8" fill="#4d9bf5" opacity=".7"/>
+      <circle cx="86" cy="52" r="1.8" fill="#4d9bf5" opacity=".4"/>
+      <rect x="34" y="70" width="52" height="116" rx="14" fill="#040405" stroke="#2b2b2f" stroke-width="1.2"/>
+      <rect x="50" y="82" width="20" height="52" rx="9" fill="url(#vt-metal)"/>
+      <rect x="55" y="132" width="10" height="26" rx="4" fill="url(#vt-metal)"/>
+      <rect x="57.5" y="156" width="5" height="6" rx="2" fill="#2b2b2f"/>
+      <path d="M60 162V176Q60 184 68 184" fill="none" stroke="#1d1d21" stroke-width="5" stroke-linecap="round"/>
+      <rect x="16" y="198" width="88" height="10" rx="3" fill="#0a0a0b"/>
+      <rect x="6" y="208" width="18" height="12" rx="3" fill="#101012"/>
+      <rect x="96" y="208" width="18" height="12" rx="3" fill="#101012"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="container container--wide">
+    <div class="nav__row">
+      <a href="#top" class="nav__mark" aria-label="VELTO home">
+        <svg class="nav__logo" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="7" y="7" width="18" height="18" rx="5" transform="rotate(45 16 16)" fill="#2381eb"/>
+          <path d="M11 11.5 16 21l5-9.5h-3L16 15.6l-2-4.1z" fill="#fff"/>
+        </svg>
+        <span>VELTO</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#products">Products</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Products — full-bleed pinned scroll stage -->
+  <section class="stage" id="products" data-stage>
+    <div class="stage__pin">
+
+      <p class="stage__word" aria-hidden="true">Products</p>
+
+      <div class="stage__visual">
+        <div class="stage__diamond"></div>
+        <svg class="stage__product" viewBox="0 0 120 224" role="img" aria-label="VELTO B wall-mount charger (illustration placeholder)">
+          <use href="#vt-charger"/>
+        </svg>
+      </div>
+
+      <div class="stage__content">
+        <div class="container container--wide">
+          <div class="grid">
+
+            <div class="stage__intro" style="grid-column:1/4">
+              <div>
+                <p class="stage__tag"><span class="stage__dot"></span>PRODUCTS</p>
+                <h2 class="stage__title">Tailored VELTO Lineups for Any Environment</h2>
+              </div>
+              <p class="stage__desc">Explore our flagship models and consult our experts for detailed specifications and installation requirements.</p>
+            </div>
+
+            <div class="spec" style="grid-column:9/13">
+              <h3 class="spec__title">VELTO B</h3>
+              <table class="spec__table">
+                <thead>
+                  <tr><th>Model Name</th><th>Charging Power</th><th>Connector</th><th>Charge Type</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="is-on"><td>0720B</td><td>7 kW</td><td>Type 2</td><td>AC Wallbox</td></tr>
+                  <tr><td>1120B</td><td>11 kW</td><td>Type 2</td><td>AC Wallbox</td></tr>
+                  <tr><td>2240B</td><td>22 kW</td><td>Type 2</td><td>AC Pedestal</td></tr>
+                  <tr><td>5040B</td><td>50 kW</td><td>CCS2</td><td>DC Fast</td></tr>
+                  <tr><td>1500B</td><td>150 kW</td><td>CCS2</td><td>DC Ultra Fast</td></tr>
+                </tbody>
+              </table>
+              <a href="#contact" class="btn btn--solid spec__cta">Find Recommended Products</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="dock" aria-hidden="true">
+        <div class="dock__pill">
+          <span class="dock__thumb"><svg viewBox="0 0 120 224"><use href="#vt-charger"/></svg></span>
+          <span class="dock__label">VELTO B</span>
+          <span class="dock__thumb"><svg viewBox="0 0 120 224"><use href="#vt-charger"/></svg></span>
+          <span class="dock__thumb is-dim"><svg viewBox="0 0 120 224"><use href="#vt-charger"/></svg></span>
+          <span class="dock__thumb is-dim"><svg viewBox="0 0 120 224"><use href="#vt-charger"/></svg></span>
+        </div>
+        <span class="dock__chip is-dark"><svg viewBox="0 0 120 224"><use href="#vt-charger"/></svg></span>
+        <span class="dock__chip"><svg viewBox="0 0 120 224"><use href="#vt-charger"/></svg></span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features — 4-4-4 -->
+  <section class="section features" id="features">
+    <div class="container container--wide">
+      <div class="features__head">
+        <p class="stage__tag"><span class="stage__dot"></span>WHY VELTO</p>
+        <h2 class="measure">Power that keeps every route moving.</h2>
+      </div>
+      <div class="grid">
+        <article class="feature" style="grid-column:1/5" data-reveal>
+          <div class="img img--4-3" role="img" aria-label="Image placeholder"></div>
+          <h4>Plug in, pay, go</h4>
+          <p class="subtle">One app unlocks home, street and fleet chargers with a single account.</p>
+        </article>
+        <article class="feature feature--offset" style="grid-column:5/9" data-reveal>
+          <div class="img img--4-3" role="img" aria-label="Image placeholder"></div>
+          <h4>Built for fleets</h4>
+          <p class="subtle">Load balancing and scheduled charging cut depot energy costs automatically.</p>
+        </article>
+        <article class="feature" style="grid-column:9/13" data-reveal>
+          <div class="img img--4-3" role="img" aria-label="Image placeholder"></div>
+          <h4>Always online</h4>
+          <p class="subtle">Remote diagnostics and over-the-air updates keep uptime above 99%.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact — full-bleed — 6-6 -->
+  <section class="section contact" id="contact">
+    <div class="container container--wide">
+      <div class="grid">
+        <h2 style="grid-column:1/7">Let's electrify your route.</h2>
+        <div class="contact__side" style="grid-column:8/13">
+          <p>Tell us about your site, fleet size and timeline. Our team replies within one business day.</p>
+          <a href="mailto:hello@velto.example" class="btn btn--outline">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container container--wide">
+    <div class="grid">
+      <p class="footer__brand" style="grid-column:1/5">VELTO</p>
+      <ul class="footer__links" style="grid-column:5/9">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <p class="footer__copy" style="grid-column:9/13">© 2026 VELTO Mobility. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
