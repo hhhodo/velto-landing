@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VELTO — Smart EV Charging for Every Route</title>
-<meta name="description" content="VELTO builds EV charging hardware and networks for streets, fleets and homes.">
+<title>VELTO — Every Route, Moving</title>
+<meta name="description" content="VELTO는 전동킥보드와 퍼스널 모빌리티로 도시의 모든 이동을 잇는 모빌리티 브랜드입니다.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/site.css">
@@ -13,8 +13,8 @@
 
 <!--
 variant:
-typo=quiet
-image=medium
+typo=loud
+image=high
 color=accent
 
 image-radius=soft
@@ -22,152 +22,213 @@ card-radius=round
 button-radius=soft
 
 border=hairline
-button-style=solid+outline
-fw=700/400
-spacing=space-11
+button-style=solid
+fw=700/400 (Figma override: 400/500/600 as drawn)
+spacing=Figma literal (1920 canvas, scaled by --k)
 -->
 
 <!--
-Layout Declaration
-Nav      — full-bleed
-Products — full-bleed — pinned scroll stage — 3-6-3 (ref-measured)
-Features — 4-4-4
-Contact  — full-bleed — 6-6
-Footer   — 4-4-4
+Layout Declaration (source: Figma node 1519:2, 1920 canvas)
+Header   — full-bleed — fixed
+Hero     — full-bleed — 1080
+Shapes   — full-bleed — circle / triangle / rotated square
+Products — full-bleed — pinned scroll stage — word + diamond (3-6-3 as drawn)
+Line Up  — full-bleed — 520 / 1100
+News     — 87.5 inset — 3-9 (label / list)
+Footer   — full-bleed
 -->
 
-<header class="nav">
-  <div class="container container--wide">
-    <div class="nav__row">
-      <a href="#top" class="nav__mark" aria-label="VELTO home">
-        <svg class="nav__logo" viewBox="0 0 32 32" aria-hidden="true">
-          <rect x="7" y="7" width="18" height="18" rx="5" transform="rotate(45 16 16)" fill="#2381eb"/>
-          <path d="M11 11.5 16 21l5-9.5h-3L16 15.6l-2-4.1z" fill="#fff"/>
-        </svg>
-        <span>VELTO</span>
-      </a>
-      <nav class="nav__links" aria-label="Primary">
-        <a href="#products">Products</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+<header class="nav" id="nav">
+  <div class="nav__row">
+    <a href="#top" class="nav__mark" aria-label="VELTO home">
+      <svg class="nav__logo" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="7" y="7" width="18" height="18" rx="5" transform="rotate(45 16 16)" fill="#93dc73"/>
+        <path d="M11 11.5 16 21l5-9.5h-3L16 15.6l-2-4.1z" fill="#111"/>
+      </svg>
+      <span>VELTO</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#top">Company</a>
+      <a href="#products">Products</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#lineup">Support</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
-<main id="top">
+<main id="top" class="page">
 
-  <!-- Products — full-bleed pinned scroll stage -->
+  <!-- Hero — 1080 -->
+  <section class="hero">
+    <div class="hero__bg img" role="img" aria-label="Hero image placeholder"></div>
+    <div class="hero__fade"></div>
+    <div class="hero__copy">
+      <h1 class="hero__title">Every Route Moving</h1>
+      <p class="hero__desc">도시의 모든 이동을 잇는 벨토와 함께, 믿고 맡길 수 있는 앞으로의 모빌리티</p>
+    </div>
+    <div class="hero__thumbs" aria-hidden="true">
+      <div class="img hero__thumb"></div>
+      <div class="img hero__thumb"></div>
+    </div>
+  </section>
+
+  <!-- Shapes — circle / triangle / rotated square -->
+  <section class="shapes" id="solutions">
+    <div class="shape shape--circle">
+      <h2 class="shape__title">Fleet Sharing+</h2>
+      <p class="shape__text">도시 곳곳의 거점에서 바로 타는 이동.<br>배치부터 정비, 운영까지<br>하나의 서비스로 완성합니다.</p>
+    </div>
+    <div class="shape shape--triangle">
+      <h2 class="shape__title">Design</h2>
+      <p class="shape__text">평면에서 도로로 확장되는 아이디어.<br>이동의 핵심을 디자인하고,<br>양산까지 함께합니다.</p>
+    </div>
+    <div class="shape shape--square">
+      <div class="shape__tilt">
+        <h2 class="shape__title">Charge, Swap</h2>
+        <p class="shape__text">더 많은 이동이 끊기지 않도록,<br>충전과 교환 거점을 연결해<br>도시의 흐름을 이어갑니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products — pinned scroll stage -->
   <section class="stage" id="products" data-stage>
     <div class="stage__pin">
+      <div class="stage__frame">
 
-      <p class="stage__word" aria-hidden="true">Products</p>
+        <p class="stage__word" aria-hidden="true">Products</p>
 
-      <div class="stage__visual">
-        <div class="stage__diamond"></div>
-        <div class="stage__product img" role="img" aria-label="Product image placeholder"></div>
-      </div>
+        <div class="stage__art">
+          <div class="stage__diamond"></div>
+          <div class="stage__product img" role="img" aria-label="Product image placeholder"></div>
+        </div>
 
-      <div class="stage__content">
-        <div class="container container--wide">
-          <div class="grid">
+        <div class="stage__intro">
+          <p class="stage__tag"><span class="stage__dot"><i></i></span><span>PRODUCTS</span></p>
+          <h2 class="stage__title">Tailored VELTO Lineups for Any Environment</h2>
+          <p class="stage__desc">Explore our flagship models and consult our experts for detailed specifications and service requirements.</p>
+        </div>
 
-            <div class="stage__intro" style="grid-column:1/4">
-              <div>
-                <p class="stage__tag"><span class="stage__dot"></span>PRODUCTS</p>
-                <h2 class="stage__title">Tailored VELTO Lineups for Any Environment</h2>
-              </div>
-              <p class="stage__desc">Explore our flagship models and consult our experts for detailed specifications and installation requirements.</p>
-            </div>
+        <div class="spec">
+          <h3 class="spec__title">VELTO B</h3>
+          <table class="spec__table">
+            <thead>
+              <tr><th>Model Name</th><th>Range per Charge</th><th>Battery Capacity</th><th>Top Speed</th></tr>
+            </thead>
+            <tbody>
+              <tr class="is-on"><td>V520B</td><td>45 km</td><td>360 Wh</td><td>25 km/h</td></tr>
+              <tr><td>V540B</td><td>60 km</td><td>480 Wh</td><td>25 km/h</td></tr>
+              <tr><td>V820B</td><td>80 km</td><td>640 Wh</td><td>35 km/h</td></tr>
+              <tr><td>V840B</td><td>100 km</td><td>840 Wh</td><td>35 km/h</td></tr>
+              <tr><td>V1540B</td><td>150 km</td><td>1,200 Wh</td><td>45 km/h</td></tr>
+            </tbody>
+          </table>
+          <a href="#contact" class="spec__cta">Find Recommended Products</a>
+        </div>
 
-            <div class="spec" style="grid-column:9/13">
-              <h3 class="spec__title">VELTO B</h3>
-              <table class="spec__table">
-                <thead>
-                  <tr><th>Model Name</th><th>Charging Power</th><th>Connector</th><th>Charge Type</th></tr>
-                </thead>
-                <tbody>
-                  <tr class="is-on"><td>0720B</td><td>7 kW</td><td>Type 2</td><td>AC Wallbox</td></tr>
-                  <tr><td>1120B</td><td>11 kW</td><td>Type 2</td><td>AC Wallbox</td></tr>
-                  <tr><td>2240B</td><td>22 kW</td><td>Type 2</td><td>AC Pedestal</td></tr>
-                  <tr><td>5040B</td><td>50 kW</td><td>CCS2</td><td>DC Fast</td></tr>
-                  <tr><td>1500B</td><td>150 kW</td><td>CCS2</td><td>DC Ultra Fast</td></tr>
-                </tbody>
-              </table>
-              <a href="#contact" class="btn btn--solid spec__cta">Find Recommended Products</a>
-            </div>
-
+        <div class="dock" aria-hidden="true">
+          <div class="dock__pill">
+            <span class="dock__btn"><i class="img"></i></span>
+            <span class="dock__label">VELTO B</span>
+            <span class="dock__group">
+              <span class="dock__btn"><i class="img"></i></span>
+              <span class="dock__btn is-dim"><i class="img"></i></span>
+              <span class="dock__btn is-dim"><i class="img"></i></span>
+            </span>
           </div>
+          <div class="dock__pill"><span class="dock__chip img"></span></div>
+          <div class="dock__pill"><span class="dock__chip img"></span></div>
         </div>
-      </div>
 
-      <div class="dock" aria-hidden="true">
-        <div class="dock__pill">
-          <span class="dock__thumb"></span>
-          <span class="dock__label">VELTO B</span>
-          <span class="dock__thumb"></span>
-          <span class="dock__thumb is-dim"></span>
-          <span class="dock__thumb is-dim"></span>
-        </div>
-        <span class="dock__chip is-dark"></span>
-        <span class="dock__chip"></span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Features — 4-4-4 -->
-  <section class="section features" id="features">
-    <div class="container container--wide">
-      <div class="features__head">
-        <p class="stage__tag"><span class="stage__dot"></span>WHY VELTO</p>
-        <h2 class="measure">Power that keeps every route moving.</h2>
-      </div>
-      <div class="grid">
-        <article class="feature" style="grid-column:1/5" data-reveal>
-          <div class="img img--4-3" role="img" aria-label="Image placeholder"></div>
-          <h4>Plug in, pay, go</h4>
-          <p class="subtle">One app unlocks home, street and fleet chargers with a single account.</p>
-        </article>
-        <article class="feature feature--offset" style="grid-column:5/9" data-reveal>
-          <div class="img img--4-3" role="img" aria-label="Image placeholder"></div>
-          <h4>Built for fleets</h4>
-          <p class="subtle">Load balancing and scheduled charging cut depot energy costs automatically.</p>
-        </article>
-        <article class="feature" style="grid-column:9/13" data-reveal>
-          <div class="img img--4-3" role="img" aria-label="Image placeholder"></div>
-          <h4>Always online</h4>
-          <p class="subtle">Remote diagnostics and over-the-air updates keep uptime above 99%.</p>
-        </article>
       </div>
     </div>
   </section>
 
-  <!-- Contact — full-bleed — 6-6 -->
-  <section class="section contact" id="contact">
-    <div class="container container--wide">
-      <div class="grid">
-        <h2 style="grid-column:1/7">Let's electrify your route.</h2>
-        <div class="contact__side" style="grid-column:8/13">
-          <p>Tell us about your site, fleet size and timeline. Our team replies within one business day.</p>
-          <a href="mailto:hello@velto.example" class="btn btn--outline">Contact Sales</a>
-        </div>
+  <!-- Line Up — dark -->
+  <section class="lineup" id="lineup">
+    <div class="lineup__bg"><div class="img lineup__img" role="img" aria-label="Background image placeholder"></div></div>
+    <div class="lineup__copy">
+      <h2 class="lineup__title">Line Up</h2>
+      <p class="lineup__desc">벨토의 모빌리티는 업계 최고 수준의 배터리와<br>모터 사양을 적용하여 완벽한 주행을 만들어 냅니다.<br>제품의 개발과 개선 단계에서 경쟁 제품과 비교·연구를 거치고,<br>고객에게 무조건 비교우위에 있는 모델을 제공합니다.</p>
+      <div class="lineup__nav">
+        <button type="button" class="lineup__arrow" data-dir="-1" aria-label="이전">←</button>
+        <button type="button" class="lineup__arrow lineup__arrow--next" data-dir="1" aria-label="다음">→</button>
+      </div>
+    </div>
+    <div class="lineup__cards">
+      <article class="lcard is-active">
+        <span class="lcard__chip">킥보드</span>
+        <h3 class="lcard__title">전동킥보드</h3>
+        <p class="lcard__text">가벼운 차체와 안정적인 주행 성능으로 도심 곳곳을 잇는 라스트마일 이동 솔루션</p>
+        <div class="img lcard__img" role="img" aria-label="Image placeholder"></div>
+      </article>
+      <article class="lcard">
+        <span class="lcard__chip">자전거</span>
+        <h3 class="lcard__title">전기자전거</h3>
+        <p class="lcard__text">강력한 모터 보조와 긴 주행거리로 출퇴근부터 레저까지 대응하는 전동 자전거 솔루션</p>
+        <div class="img lcard__img" role="img" aria-label="Image placeholder"></div>
+      </article>
+      <article class="lcard">
+        <span class="lcard__chip">퍼스널</span>
+        <h3 class="lcard__title">퍼스널 모빌리티</h3>
+        <p class="lcard__text">작은 크기와 뛰어난 조작 편의성으로 좁은 길과 실내까지 대응하는 개인 이동 솔루션</p>
+        <div class="img lcard__img" role="img" aria-label="Image placeholder"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="news" id="news">
+    <div class="news__inner">
+      <div class="news__head">
+        <h2 class="news__title">Latest News Release</h2>
+        <a href="#news" class="news__more" aria-label="더보기"><img src="assets/icons/arrow-news-head.png" alt=""></a>
+      </div>
+      <div class="news__body">
+        <p class="news__label"><i></i>NEWS</p>
+        <ul class="news__list">
+          <li><a href="#news"><span class="news__t">벨토, 서울 전역 공유 킥보드 5천 대 확대 … 라스트마일 강화</span><span class="news__d">2026.10.16</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
+          <li><a href="#news"><span class="news__t">벨토모빌리티, 유럽에 차세대 배터리 교환 스테이션 공개</span><span class="news__d">2026.10.12</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
+          <li><a href="#news"><span class="news__t">벨토, 국내 최초 급속충전 연동 스마트 거점 구축</span><span class="news__d">2026.10.08</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
+          <li><a href="#news"><span class="news__t">벨토 배터리, 국제 안전 인증 획득 … 글로벌 공급망 확대</span><span class="news__d">2026.09.17</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
+          <li><a href="#news"><span class="news__t">벨토, 9월에만 3,865대 수주 ‘쾌거’</span><span class="news__d">2026.09.15</span><img src="assets/icons/arrow-news-item.png" alt=""></a></li>
+        </ul>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="footer">
-  <div class="container container--wide">
-    <div class="grid">
-      <p class="footer__brand" style="grid-column:1/5">VELTO</p>
-      <ul class="footer__links" style="grid-column:5/9">
-        <li><a href="#products">Products</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <p class="footer__copy" style="grid-column:9/13">© 2026 VELTO Mobility. All rights reserved.</p>
+<footer class="footer" id="contact">
+  <div class="footer__top">
+    <ul class="footer__links">
+      <li><a href="#contact" class="is-strong">개인정보처리방침</a></li>
+      <li><a href="#contact">이용약관</a></li>
+      <li><a href="mailto:hello@velto.example">문의하기</a></li>
+      <li><a href="#contact">찾아오시는 길</a></li>
+      <li><a href="#contact">CI 소개</a></li>
+      <li><a href="#contact" class="has-ext">채용공고<img src="assets/icons/external.png" alt=""></a></li>
+    </ul>
+  </div>
+  <div class="footer__bottom">
+    <a href="#top" class="footer__logo" aria-label="VELTO home">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="7" y="7" width="18" height="18" rx="5" transform="rotate(45 16 16)" fill="#93dc73"/>
+        <path d="M11 11.5 16 21l5-9.5h-3L16 15.6l-2-4.1z" fill="#111"/>
+      </svg>
+      <span>VELTO</span>
+    </a>
+    <div class="footer__info">
+      <div>
+        <p class="footer__addr"><span>서울특별시 성동구 아차산로17길 48, 성수 모빌리티허브 5층</span><span>대표전화 1588-0000</span><span>팩스 02-0000-0000</span></p>
+        <p class="footer__copy">ⓒ2026 VELTO Mobility All Rights Reserved.</p>
+      </div>
+      <div class="footer__cert">
+        <i class="img footer__cert-img"></i>
+        <p>[인증범위] 공유 모빌리티 서비스 운영</p>
+        <p>[유효기간] 0000.00.00 ~ 0000.00.00</p>
+      </div>
     </div>
   </div>
 </footer>
