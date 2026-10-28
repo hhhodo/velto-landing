@@ -4,7 +4,7 @@
   const stage = document.querySelector('[data-stage]');
   const pin = stage && stage.querySelector('.stage__pin');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const stacked = window.matchMedia('(max-width:1024px)');
+  const stacked = window.matchMedia('(max-width:1100px)');
 
   const clamp = (v) => Math.min(1, Math.max(0, v));
   const range = (p, a, b) => clamp((p - a) / (b - a));
