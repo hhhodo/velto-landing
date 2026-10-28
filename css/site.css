@@ -16,7 +16,7 @@
 /* ---------- header ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:calc(100 * var(--k));color:#fff;
   transition:background .3s,color .3s;}
-.nav::before{content:"";position:absolute;inset:0 0 calc(-30 * var(--k)) 0;z-index:-1;background:linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,0));pointer-events:none;transition:opacity .3s;}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(0,0,0,.4);pointer-events:none;transition:opacity .3s;}
 .nav.is-solid::before{opacity:0;}
 .nav.is-solid{background:#fff;color:var(--ink);border-bottom:1px solid var(--line);}
 .nav__row{position:relative;display:flex;align-items:center;height:100%;padding-inline:calc(63.936 * var(--k));}
