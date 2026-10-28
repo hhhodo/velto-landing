@@ -10,6 +10,8 @@
   --line:#e1e3e6;
   --mega:#ededed;
 }
+/* nothing may push the page sideways (the strip outside the page on phones) */
+html{overflow-x:hidden;overscroll-behavior-x:none;}
 .page{overflow-x:clip;}
 .img{border-radius:0;}
 
